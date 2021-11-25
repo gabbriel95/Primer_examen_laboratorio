@@ -50,7 +50,7 @@ int ProcesarPedido(ePedido listaPedidos[], int sizePedidos, eCliente listaClient
 			{
 				for(int i=0; i<sizePedidos; i++)
 				{
-					if(listaPedidos[i].idPedido == idPedido)
+					if(listaPedidos[i].idPedido == idPedido && listaPedidos[i].isEmpty == 0)
 					{
 						Utn_GetNumeroFlotante(&listaPedidos[i].kgHdpe, "Ingrese los KG de HDPE del pedido\n", "Error, esta fuera del rango\n", 1, INT_MAX, 3);
 						Utn_GetNumeroFlotante(&listaPedidos[i].kgLdpe, "Ingrese los KG de LDPE del pedido\n", "Error, esta fuera del rango\n", 1, INT_MAX, 3);
@@ -324,7 +324,6 @@ int MostrarPedidosPedidosPendientesXZona(eCliente listaClientes[], int sizeClien
 			if(listaClientes[i].isEmpty == 0 && listaClientes[i].idZona == listaZonas[respuesta-1].idZona)
 			{
 				listaZonas[respuesta-1].pedidosPendientes += listaClientes[i].contadorPendientes;
-				printf("\n%d", listaZonas[respuesta-1].pedidosPendientes);
 			}
 
 		}
@@ -334,6 +333,7 @@ int MostrarPedidosPedidosPendientesXZona(eCliente listaClientes[], int sizeClien
 	if(listaZonas[respuesta-1].pedidosPendientes > 0)
 	{
 		printf("\nLos pedidos pendientes de la zona %s son %d", listaZonas[respuesta-1].zona, listaZonas[respuesta-1].pedidosPendientes);
+		listaZonas[respuesta-1].pedidosPendientes = 0;
 	}else
 	{
 		printf("\nPrimero debe cargar un pedido a un cliente en esa zona\n");

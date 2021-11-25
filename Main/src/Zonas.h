@@ -14,7 +14,7 @@ typedef struct
 	int idZona;
 	char zona[TAM_CARACTERES];
 	int pedidosPendientes;
-	int isEmpty; // 1 vacio 0 lleno
+	int isEmpty;
 
 }eZonas;
 
