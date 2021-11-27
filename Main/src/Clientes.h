@@ -25,7 +25,8 @@ int VerificarId(eCliente listaClientes[], int sizeClientes, int IdAValidar);
 void AumentarContadorPendientes(eCliente listaClientes[], int sizeClientes, int idCliente);
 void DisminuirContadorPendientes(eCliente listaClientes[], int sizeClientes, int idCliente);
 
-int CargarListaClientes(eCliente listaClientes[], int sizeClientes, int* idCliente);
+
+int CargarCliente(eCliente listaClientes[], int sizeClientes, int* idCliente);
 int ModificarCliente(eCliente listaClientes[], int sizeClientes, eLocalidad listaLocalidades[], int sizeLocalidades);
 int EliminarCliente(eCliente listaClientes[], int sizeClientes, eLocalidad listaLocalidades[], int sizeLocalidades);
 

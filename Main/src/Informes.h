@@ -18,7 +18,7 @@ int CalcularPromedioPolipropileno(eCliente listaClientes[], int sizeClientes, eP
 int ClienteConMasPedidosPendientes(eCliente listaClientes[], int sizeClientes, ePedido listaPedidos[], int sizePedidos);
 int ClienteConMasPedidosCompletos(eCliente listaClientes[], int sizeClientes, ePedido listaPedidos[], int sizePedidos);
 
-int MostrarPedidosPedidosPendientesXZona(eCliente listaClientes[], int sizeClientes, ePedido listaPedidos[], int sizePedidos, eZonas listaZonas[], int sizeZonas);
+int MostrarPedidosPendientesXZona(eCliente listaClientes[], int sizeClientes, eZonas listaZonas[], int sizeZonas);
 
 
 #endif

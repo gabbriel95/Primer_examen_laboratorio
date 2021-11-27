@@ -298,7 +298,7 @@ int ClienteConMasPedidosCompletos(eCliente listaClientes[], int sizeClientes, eP
 					indice = i;
 				}
 			}
-			printf("\nEl cliente con mayor cantidad de pedidos pendientes es %s con %d pedidos pendientes", listaClientes[indice].nombreEmpresa, maximoCompletado);
+			printf("\nEl cliente con mayor cantidad de pedidos pendientes es %s con %d pedidos completados", listaClientes[indice].nombreEmpresa, maximoCompletado);
 		}
 		else
 		{
@@ -310,12 +310,13 @@ int ClienteConMasPedidosCompletos(eCliente listaClientes[], int sizeClientes, eP
 	return retorno;
 }
 
-int MostrarPedidosPedidosPendientesXZona(eCliente listaClientes[], int sizeClientes, ePedido listaPedidos[], int sizePedidos, eZonas listaZonas[], int sizeZonas)
+int MostrarPedidosPendientesXZona(eCliente listaClientes[], int sizeClientes, eZonas listaZonas[], int sizeZonas)
 {
 	int retorno = -1;
 	int respuesta;
-	if(listaClientes != NULL && sizeClientes > 0 &&  listaPedidos != NULL && sizePedidos > 0 && listaZonas != NULL && sizeZonas > 0)
+	if(listaClientes != NULL && sizeClientes > 0 && listaZonas != NULL && sizeZonas > 0)
 	{
+		retorno = 0;
 
 	 if(Utn_GetNumero(&respuesta, "\nSeleccione la zona: \n 1)Zona UNO [Avellaneda-Lanus]\n 2) Zona DOS [Quilmes-Almirante]\n 3) Zona TRES [Varela]\n ", "Error, opcion no valida", 1, 3, 3) == 1)
 	 {
@@ -324,6 +325,7 @@ int MostrarPedidosPedidosPendientesXZona(eCliente listaClientes[], int sizeClien
 			if(listaClientes[i].isEmpty == 0 && listaClientes[i].idZona == listaZonas[respuesta-1].idZona)
 			{
 				listaZonas[respuesta-1].pedidosPendientes += listaClientes[i].contadorPendientes;
+				retorno = 1;
 			}
 
 		}

@@ -46,7 +46,7 @@ int main(void) {
 		{
 			switch(opcion){
 					case 1:
-						CargarListaClientes(listaClientes, TAM_CLIENTES, &idClientes);
+						CargarCliente(listaClientes, TAM_CLIENTES, &idClientes);
 						break;
 					case 2:
 						ModificarCliente(listaClientes, TAM_CLIENTES, listaLocalidades, TAM_LOCALIDADES);
@@ -81,7 +81,7 @@ int main(void) {
 						ClienteConMasPedidosCompletos(listaClientes, TAM_CLIENTES, listaPedidos, TAM_PEDIDOS);
 						break;
 					case 13:
-						MostrarPedidosPedidosPendientesXZona(listaClientes, TAM_CLIENTES, listaPedidos, TAM_PEDIDOS, listaZonas, TAM_ZONAS);
+						MostrarPedidosPendientesXZona(listaClientes, TAM_CLIENTES, listaZonas, TAM_ZONAS);
 						break;
 					case 14:
 						printf("Gracias vuelva pronto\n");

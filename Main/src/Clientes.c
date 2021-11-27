@@ -78,7 +78,7 @@ int VerificarId(eCliente listaClientes[], int sizeClientes, int IdAValidar)
 	return retorno;
 }
 
-int CargarListaClientes(eCliente listaClientes[], int sizeClientes, int* idCliente)
+int CargarCliente(eCliente listaClientes[], int sizeClientes, int* idCliente)
 {
 	int retorno = -1;
 	int respuesta;
@@ -93,10 +93,11 @@ int CargarListaClientes(eCliente listaClientes[], int sizeClientes, int* idClien
 			{
 				if(listaClientes[i].isEmpty == 1)
 				{
+
 					if(
-						PedirCadenaChars(listaClientes[i].nombreEmpresa, TAM_CARACTERES, "Ingrese el nombre de la empresa", "Error", 3) == 1 &&
+						PedirCadenaChars(listaClientes[i].nombreEmpresa, TAM_CARACTERES, "\nIngrese el nombre de la empresa: ", "Error", 3) == 1 &&
 						cargarCuit(listaClientes[i].cuit, 3) == 1 &&
-						PedirAlphaNumerico(listaClientes[i].direccion, TAM_CARACTERES, "Ingrese la dirección de la empresa", "Error", 3) == 1 &&
+						PedirAlphaNumerico(listaClientes[i].direccion, TAM_CARACTERES, "\nIngrese la dirección de la empresa:", "Error", 3) == 1 &&
 						Utn_GetNumero(&respuesta, "\nSeleccione una localidad:\n 1) Quilmes\n 2) Varela\n 3) Avellaneda\n 4) Lanus\n 5) Almirante Brown\n", "\nError, opcion no valida", 1, 5, 3)==1)
 					{
 						listaClientes[i].isEmpty = 0;
@@ -124,8 +125,9 @@ int CargarListaClientes(eCliente listaClientes[], int sizeClientes, int* idClien
 					{
 						puts("Error, en la carga de un dato, no se pudo cargar el cliente");
 					}
-
 				}
+
+
 
 			}
 
@@ -159,11 +161,24 @@ int ModificarCliente(eCliente listaClientes[], int sizeClientes, eLocalidad list
 				{
 					if(listaClientes[i].isEmpty == 0 && listaClientes[i].idCliente == idABuscar)
 					{
-						if( PedirAlphaNumerico(direccionAux, TAM_CARACTERES, "Ingrese la dirección de la empresa", "Error", 3) == 1 &&
+						if( PedirAlphaNumerico(direccionAux, TAM_CARACTERES, "\nIngrese la dirección de la empresa", "Error", 3) == 1 &&
 								Utn_GetNumero(&respuesta, "\nSeleccione una localidad:\n 1) Quilmes\n 2) Varela\n 3) Avellaneda\n 4) Lanus\n 5) Almirante Brown\n", "\nError, opcion no valida", 1, 5, 3)==1)
 						{
 							strncpy(listaClientes[i].direccion, direccionAux, TAM_CARACTERES);
 							listaClientes[i].idLocalidad = respuesta;
+
+							if(respuesta == 3 || respuesta == 4)
+								{
+									listaClientes[i].idZona = 1;
+								}
+							else if (respuesta == 1 || respuesta == 5)
+								{
+									listaClientes[i].idZona = 2;
+								}
+							else
+								{
+									listaClientes[i].idZona = 3;
+								}
 							retorno = 1;
 						}
 					}
